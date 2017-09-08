@@ -1,0 +1,16 @@
+Package: sternclean
+Type: Package
+Title: sternclean: A cleaner way to clean
+Version: 0.0.0.9000
+Imports: dplyr (>= 0.7.2)
+Author: Elliot Stern
+Maintainer: Elliot Stern <stern.elliot@gmail.com>
+Description: Clean your dataframe with a less verbose, easier to interpret, code. It's recommended to keep the parameters lined up with each other and that each gets its own line to keep the code readable and debugging easier.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+BugReports: https://github.com/basketballbeane/sternclean/issues
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
