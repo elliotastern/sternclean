@@ -5,7 +5,7 @@ Multiple cleaning steps can be done in just one function.
 
 For example, you can change column types, impute one set of columns' NAs with a set value, impute another set of columns' NAs with a group mean, and impute another set of columns' infinite values with another set value in a few lines of clean code
 
-Here is the Order of operations under the hood:
+Here is the order of operations under the hood:
 
 -   Change the types
 -   Remove columns
@@ -64,7 +64,8 @@ We will start out with over simple one step cleaning steps. Later we will take o
 </tbody>
 </table>
 
-#### class change parameters
+Class Change Parameters
+-----------------------
 
 ``` r
 class(rickle_and_mortan$people)
@@ -88,7 +89,8 @@ class(rickle_and_mortan$intelligence)
 #> [1] "numeric"
 ```
 
-#### column/row removal parameters
+Column/Row Removal Parameters
+-----------------------------
 
 ``` r
 sternclean("rickle_and_mortan",
@@ -324,7 +326,8 @@ sternclean("rickle_and_mortan",
 </tbody>
 </table>
 
-#### impute parameters
+Impute Parameters
+-----------------
 
 ``` r
 sternclean("rickle_and_mortan",
@@ -573,9 +576,16 @@ sternclean("rickle_and_mortan",
 </tbody>
 </table>
 
-#### More complex example
+More Complex Example
+--------------------
 
-Here we: - change the people column's class to string - change the intelligence column's class to numeric - remove the original\_person column - impute the NAs in the evil rank with the column's mean - impute the infite values in the intelligence column to 1738
+Here we:
+
+-   change the people column's class to string
+-   change the intelligence column's class to numeric
+-   remove the original\_person column
+-   impute the NAs in the evil rank with the column's mean
+-   impute the infite values in the intelligence column to 1738
 
 ``` r
 sternclean("rickle_and_mortan",
@@ -621,6 +631,51 @@ sternclean("rickle_and_mortan",
 <td align="center">Pickle Rickle</td>
 <td align="center">1738</td>
 <td align="center">3.25</td>
+</tr>
+</tbody>
+</table>
+
+### Compared to Starting Data Frame
+
+<table style="width:83%;">
+<colgroup>
+<col width="22%" />
+<col width="25%" />
+<col width="20%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">people</th>
+<th align="center">original_person</th>
+<th align="center">intelligence</th>
+<th align="center">evil_rank</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Rickle</td>
+<td align="center">Rickle</td>
+<td align="center">Inf</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">Mortan</td>
+<td align="center">Mortan</td>
+<td align="center">9</td>
+<td align="center">2.75</td>
+</tr>
+<tr class="odd">
+<td align="center">Jerry</td>
+<td align="center">Jerry</td>
+<td align="center">0.1</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">Pickle Rickle</td>
+<td align="center">Rickle</td>
+<td align="center">Inf</td>
+<td align="center">NA</td>
 </tr>
 </tbody>
 </table>
