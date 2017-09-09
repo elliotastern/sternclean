@@ -1,5 +1,4 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 `sternclean` seeks to simplify cleaning dataframes as much as possible.
 
 Multiple cleaning steps can be done in just one function.
@@ -576,23 +575,16 @@ sternclean("rickle_and_mortan",
 
 #### More complex example
 
-Here we will:
-
--   change the intelligence column type to numeric
--   change the people cloumn type to character
--   remove the original\_person column
--   impute the evil\_rank column's NAs with the column average
--   impute the intelligence column with 1738
+Here we: - change the people column's class to string - change the intelligence column's class to numeric - remove the original\_person column - impute the NAs in the evil rank with the column's mean - impute the infite values in the intelligence column to 1738
 
 ``` r
 sternclean("rickle_and_mortan",
-           class_to_numer = "intelligence",
            class_to_strng = "people",
+           class_to_numer = "intelligence",
            remove_columns = "original_person",
            impute_na2mean = "evil_rank",
            impute_inf_col = "intelligence",
-           impute_inf_wit =  1738
-           
+           impute_inf_wit = 1738
            )
 ```
 
