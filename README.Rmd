@@ -1,13 +1,11 @@
 ---
-title: "Introduction to sternclean"
-author: "Elliot Stern"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Introduction to sternclean}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output:
+  github_document:
+    html_preview: false
 ---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 
 ```{r setup, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(collapse = T, comment = "#>")
