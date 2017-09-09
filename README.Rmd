@@ -1,0 +1,241 @@
+---
+output:
+  github_document:
+    html_preview: false
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+# options(tibble.print_min = 4L, tibble.print_max = 4L)
+library(dplyr)
+# devtools::load_all("C:/Users/stern/Dropbox/sternclean")
+library(sternclean)
+library(pander)
+set.seed(1014)
+```
+
+
+`sternclean` seeks to simplify cleaning dataframes as much as
+possible.
+
+Multiple cleaning steps can be done in just one function.
+
+For example,
+you can change column types, impute one set of columns' NAs with 
+a set value, impute another set of columns' NAs with a group mean, and
+impute another set of columns' infinite values with another set value
+in a few lines of clean code
+
+Here is the Order of operations under the hood: 
+
+
+- Change the types
+- Remove columns
+- Impute NAs
+- Impute infinites
+
+This allows multiple cleaning processes to happen in this one function
+
+
+## Simple Examples
+We will start out with over simple one step cleaning steps. Later we will take on more complex situations
+
+### Rickle and Mortan Dataset
+
+```{r, echo = FALSE, message = FALSE, results = "asis"}
+
+people <- c("Rickle", "Mortan", "Jerry", "Pickle Rickle")
+Original_person <- c("Rickle", "Mortan", "Jerry", "Rickle")
+intelligence <- c(Inf, 9, 0.1, Inf)
+evil_rank <- c(5, 2.75, 2, NA)
+
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+
+rickle_and_mortan$people <- as.factor(rickle_and_mortan$people)
+
+pander::pandoc.table(rickle_and_mortan)
+
+rickle_and_mortan$intelligence <- as.character(rickle_and_mortan$intelligence)
+```
+
+#### class change parameters
+```{r}
+class(rickle_and_mortan$people)
+
+sternclean("rickle_and_mortan",
+           class_to_strng = "people")
+
+class(rickle_and_mortan$people)
+
+```
+
+
+```{r}
+class(rickle_and_mortan$intelligence)
+
+sternclean("rickle_and_mortan",
+           class_to_numer = "intelligence")
+
+class(rickle_and_mortan$intelligence)
+
+```
+
+#### column/row removal parameters
+
+```{r}
+sternclean("rickle_and_mortan",
+           remove_columns = "intelligence")
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+
+```{r}
+sternclean("rickle_and_mortan",
+           remove_na_rows =  "evil_rank")
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+
+```{r}
+sternclean("rickle_and_mortan",
+           removeby_regex = "pe")
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+
+```{r}
+sternclean("rickle_and_mortan",
+           remove_all_nas = TRUE)
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+
+```{r}
+sternclean("rickle_and_mortan",
+           remove_non_num = TRUE)
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+
+```{r}
+sternclean("rickle_and_mortan",
+           remove_all_exc = c("people", "evil_rank"))
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+
+#### impute parameters
+
+```{r}
+sternclean("rickle_and_mortan",
+           impute_na2mean = "evil_rank")
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+```{r}
+sternclean("rickle_and_mortan",
+           impute_na_cols = "evil_rank",
+           impute_na_with = 1738)
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+
+```{r}
+sternclean("rickle_and_mortan",
+           impute_grpmean = "evil_rank",
+           impute_grpwith = "Original_person")
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+```{r}
+sternclean("rickle_and_mortan",
+           impute_inf_col = "intelligence",
+           impute_inf_wit = 1738)
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+
+```{r}
+sternclean("rickle_and_mortan",
+           impute_cust_cl = "evil_rank",
+           impute_cust_fn = quantile,
+           probs = .25,
+           na.rm = TRUE
+           )
+
+```
+
+```{r, results = "asis", echo=FALSE}
+pander::pandoc.table(rickle_and_mortan)
+rickle_and_mortan <- data.frame(people, Original_person,
+                                intelligence, evil_rank)
+
+```
+
+
+
+
+> "For more, checkout my "
+([Github](https://github.com/basketballbeane))
