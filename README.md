@@ -635,7 +635,7 @@ sternclean("rickle_and_mortan",
 </tbody>
 </table>
 
-### Compared to Starting Data Frame
+#### Compared to Original Data Frame
 
 <table style="width:83%;">
 <colgroup>

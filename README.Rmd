@@ -3,6 +3,7 @@ output:
   github_document:
     html_preview: false
 ---
+
 ```{r setup, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(collapse = T, comment = "#>")
 # options(tibble.print_min = 4L, tibble.print_max = 4L)
@@ -243,7 +244,6 @@ Here we:
 - remove the original_person column
 - impute the NAs in the evil rank with the column's mean
 - impute the infite values in the intelligence column to 1738
-
 ```{r}
 sternclean("rickle_and_mortan",
            class_to_strng = "people",
@@ -263,14 +263,11 @@ rickle_and_mortan <- data.frame(people, original_person,
 
 ```
 
-### Compared to Starting Data Frame
-
+#### Compared to Original Data Frame
 ```{r, results = "asis", echo=FALSE}
 pander::pandoc.table(rickle_and_mortan)
 
-
 ```
-
 
 > "For more, checkout my "
 ([Github](https://github.com/basketballbeane))
