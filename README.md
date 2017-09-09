@@ -5,7 +5,7 @@ Multiple cleaning steps can be done in just one function.
 
 For example, you can change column types, impute one set of columns' NAs with a set value, impute another set of columns' NAs with a group mean, and impute another set of columns' infinite values with another set value in a few lines of clean code
 
-Here is the Order of operations under the hood:
+Here is the order of operations under the hood:
 
 -   Change the types
 -   Remove columns
@@ -64,7 +64,8 @@ We will start out with over simple one step cleaning steps. Later we will take o
 </tbody>
 </table>
 
-#### class change parameters
+Class Change Parameters
+-----------------------
 
 ``` r
 class(rickle_and_mortan$people)
@@ -88,7 +89,8 @@ class(rickle_and_mortan$intelligence)
 #> [1] "numeric"
 ```
 
-#### column/row removal parameters
+Column/Row Removal Parameters
+-----------------------------
 
 ``` r
 sternclean("rickle_and_mortan",
@@ -324,7 +326,8 @@ sternclean("rickle_and_mortan",
 </tbody>
 </table>
 
-#### impute parameters
+Impute Parameters
+-----------------
 
 ``` r
 sternclean("rickle_and_mortan",
@@ -573,9 +576,16 @@ sternclean("rickle_and_mortan",
 </tbody>
 </table>
 
-#### More complex example
+More Complex Example
+--------------------
 
-Here we: - change the people column's class to string - change the intelligence column's class to numeric - remove the original\_person column - impute the NAs in the evil rank with the column's mean - impute the infite values in the intelligence column to 1738
+Here we:
+
+-   change the people column's class to string
+-   change the intelligence column's class to numeric
+-   remove the original\_person column
+-   impute the NAs in the evil rank with the column's mean
+-   impute the infite values in the intelligence column to 1738
 
 ``` r
 sternclean("rickle_and_mortan",

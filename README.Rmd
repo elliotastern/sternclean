@@ -25,7 +25,7 @@ a set value, impute another set of columns' NAs with a group mean, and
 impute another set of columns' infinite values with another set value
 in a few lines of clean code
 
-Here is the Order of operations under the hood: 
+Here is the order of operations under the hood: 
 
 
 - Change the types
@@ -59,7 +59,7 @@ pander::pandoc.table(rickle_and_mortan)
 rickle_and_mortan$intelligence <- as.character(rickle_and_mortan$intelligence)
 ```
 
-#### class change parameters
+## Class Change Parameters
 ```{r}
 class(rickle_and_mortan$people)
 
@@ -81,7 +81,7 @@ class(rickle_and_mortan$intelligence)
 
 ```
 
-#### column/row removal parameters
+## Column/Row Removal Parameters
 
 ```{r}
 sternclean("rickle_and_mortan",
@@ -161,7 +161,7 @@ rickle_and_mortan <- data.frame(people, original_person,
 
 ```
 
-#### impute parameters
+## Impute Parameters
 
 ```{r}
 sternclean("rickle_and_mortan",
@@ -233,9 +233,11 @@ rickle_and_mortan <- data.frame(people, original_person,
 
 ```
 
-#### More complex example
+## More Complex Example
 
 Here we:
+
+
 - change the people column's class to string
 - change the intelligence column's class to numeric
 - remove the original_person column
