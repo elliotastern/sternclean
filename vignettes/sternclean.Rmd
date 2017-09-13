@@ -43,7 +43,7 @@ This allows multiple cleaning processes to happen in this one function
 
 
 ## Simple Examples
-We will start out with over simple one step cleaning steps. Later we will take on more complex situations
+We will start out with simple one step cleaning examples. Later we will take on more complex situations
 
 ### Rickle and Mortan Dataset
 
