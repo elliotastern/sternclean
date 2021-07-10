@@ -680,4 +680,4 @@ sternclean("rickle_and_mortan",
 </tbody>
 </table>
 
-> "For more, checkout my " ([Github](https://github.com/basketballbeane))
+
