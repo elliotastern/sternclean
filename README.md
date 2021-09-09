@@ -1,7 +1,7 @@
 
 `sternclean` seeks to simplify cleaning dataframes.
 
-Multiple cleaning steps can be done in just one function.
+Multiple cleaning steps are accomplished in just one function.
 
 For example, you can change column types, impute one set of columns' NAs with a set value, impute another set of columns' NAs with a group mean, and impute another set of columns' infinite values with another set value in a few lines of clean code
 
@@ -17,7 +17,7 @@ This allows multiple cleaning processes to happen in this one function
 Simple Examples
 ---------------
 
-We will start out with simple one step cleaning examples. Later we will take on more complex situations
+We will start with simple one step cleaning examples. Later we will take on more complex situations
 
 ### Rickle and Mortan Dataset
 
