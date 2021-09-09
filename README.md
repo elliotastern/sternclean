@@ -1,5 +1,5 @@
 
-`sternclean` seeks to simplify cleaning dataframes as much as possible.
+`sternclean` seeks to simplify cleaning dataframes.
 
 Multiple cleaning steps can be done in just one function.
 
